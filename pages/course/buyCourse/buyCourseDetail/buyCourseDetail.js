@@ -313,8 +313,11 @@ Page({
     }
     if (courselistSelected.length > 0) {
       if (courselistSelected.length == 1 || courselistSelected[0].courseid == -1 && courselistSelected[0].selected == 1) {
-        commodityid = courselistSelected[0].banxinglist[this.data.commoditydetail.banxing].id;
-        // console.log(commodityid);
+        if (courselistSelected[0].banxinglist.length == 1) {
+          commodityid = courselistSelected[0].banxinglist[0].id;
+        } else {
+          commodityid = courselistSelected[0].banxinglist[this.data.commoditydetail.banxing].id;
+        }
         this.commoditydetail(commodityid);
         this.setData({ selectedCourseid: courselistSelected[0].courseid });
       } else {
